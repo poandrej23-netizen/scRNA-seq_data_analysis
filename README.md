@@ -60,7 +60,6 @@ docker run -d \
 #### Открыть в браузере:
 ##### http://localhost:8080
 ##### http://localhost:8080/files (список файлов)
-##### http://localhost:8080/plot/umap_supercluster_term.png (график)
 
 ### Просмотр логов в реальном времени
 ```bash
