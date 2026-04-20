@@ -20,6 +20,24 @@ docker build -t scrna-analysis .
 ```bash
 docker run --rm scrna-analysis
 ```
+#### Демо-режим (создает небольшой искусственный датасет для быстрого тестирования)
+```bash
+docker run --rm \
+  -e DEMO_MODE=true \
+  -e DEMO_CELLS=500 \        
+  -e MIN_COUNTS_PER_GENE=50 \
+  -e MIN_COUNTS_PER_CELL=50 \
+  -v app-output:/output \
+  scrna-analysis
+```
+#### Быстрый тест на подвыборке реальных данных
+```bash
+docker run --rm \
+  -e QUICK_TEST=true \        # загрузит реальный файл, но возьмёт 5000 клеток
+  -v app-/data \
+  -v app-output:/output \
+  scrna-analysis
+```
 ### Запуск с включённым веб-интерфейсом
 ```bash
 docker run -d \
