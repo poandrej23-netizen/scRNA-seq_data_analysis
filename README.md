@@ -24,9 +24,7 @@ docker run --rm scrna-analysis
 ```bash
 docker run --rm \
   -e DEMO_MODE=true \
-  -e DEMO_CELLS=500 \        
-  -e MIN_COUNTS_PER_GENE=50 \
-  -e MIN_COUNTS_PER_CELL=50 \
+  -e DEMO_CELLS=2000 \
   -v app-output:/output \
   scrna-analysis
 ```
