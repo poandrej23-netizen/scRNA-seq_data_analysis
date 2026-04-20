@@ -13,12 +13,15 @@ git clone https://github.com/poandrej23-netizen/scRNA-seq_data_analysis.git
 cd scRNA-seq_data_analysis
 ```
 ### Сборка образа
+```bash
 docker build -t scrna-analysis .
-
+```
 ### Запуск анализа (вывод в терминал)
+```bash
 docker run --rm scrna-analysis
-
+```
 ### Запуск с включённым веб-интерфейсом
+```bash
 docker run -d \
   -p 8080:8080 \
   -e WEB_MODE=true \
@@ -27,32 +30,37 @@ docker run -d \
   -v app-output:/output \
   --name scrna-web \
   scrna-analysis
-
+```
 #### Открыть в браузере:
 ##### http://localhost:8080
 ##### http://localhost:8080/files (список файлов)
 ##### http://localhost:8080/plot/umap_supercluster_term.png (график)
 
 ### Просмотр логов в реальном времени
+```bash
 docker logs -f scrna-web
-
+```
 ### Остановка и удаление
+```bash
 docker stop scrna-web && docker rm scrna-web
-
+```
 ### Доказательство сохранности данных
 
 #### Первый запуск — создаём данные
+```bash
 docker run --rm \
   -v app-data:/data \
   -v app-output:/output \
   --name run1 \
   scrna-analysis
-
+```
 #### Проверка данных
 docker run --rm -v app-output:/output alpine ls -la /output
+```
 ##### Ожидается: processed_adata.h5ad, umap_*.png, pca_*.png
 
-##### Перезапуск 
+##### Перезапуск
+```bash
 docker run --rm \
   -v app-data:/data \
   -v app-output:/output \
@@ -60,7 +68,7 @@ docker run --rm \
   scrna-analysis
 
 docker run --rm -v app-output:/output alpine ls -la /output
-
+```
 ## Какой вариант задания выбран и почему
 Вариант 3, потому что веб-интерфейс удобен для просмотра графиков UMAP, PCA. Сохранение данных удобно для проведения анализа с разными датасетами и их сравнения между собой и проверки воспроизводимости.
 
