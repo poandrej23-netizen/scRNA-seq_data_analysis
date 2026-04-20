@@ -47,6 +47,16 @@ docker run -d \
   --name scrna-web \
   scrna-analysis
 ```
+#### Запуск с включённым веб-интерфейсом в демо-режиме
+```bash
+docker run -d \
+  -p 8080:8080 \
+  -e DEMO_MODE=true \
+  -e WEB_MODE=true \
+  -v app-output:/output \
+  --name scrna-demo \
+  scrna-analysis
+```
 #### Открыть в браузере:
 ##### http://localhost:8080
 ##### http://localhost:8080/files (список файлов)
