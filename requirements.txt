@@ -1,0 +1,18 @@
+# Core scientific stack
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# scRNA-seq specific
+scanpy[leiden]>=1.9.5
+scrublet>=0.2.3
+scikit-image>=0.21.0
+
+# Optional web mode
+flask>=3.0.0
+
+# Utilities
+h5py>=3.9.0
+tqdm>=4.65.0
