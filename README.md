@@ -55,6 +55,7 @@ docker run --rm \
   scrna-analysis
 ```
 #### Проверка данных
+```bash
 docker run --rm -v app-output:/output alpine ls -la /output
 ```
 ##### Ожидается: processed_adata.h5ad, umap_*.png, pca_*.png
