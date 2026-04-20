@@ -29,7 +29,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py .
+COPY scrna_seq_data_analysis.py .
 
 RUN mkdir -p ${DATA_DIR} ${OUTPUT_DIR} && \
     chown -R appuser:appuser /app ${DATA_DIR} ${OUTPUT_DIR}
