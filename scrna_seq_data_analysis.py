@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 plt.switch_backend('Agg')
 
 
-DATA_URL = os.getenv('DATA_URL', 'https://datasets.cellxgene.cziscience.com/b9cbe943-ad26-4cac-8798-6453b80834bf.h5ad')
+DATA_URL = os.getenv('DATA_URL', 'https://datasets.cellxgene.cziscience.com/b9cbe943-ad26-4cac-8798-6453b80834bf.h5ad') # replace with your data
 DATA_FILE = os.getenv('DATA_FILE', 'HumanBrain_NuclAccumb.h5ad')
 DATA_DIR = os.getenv('DATA_DIR', '/data')
 OUTPUT_DIR = os.getenv('OUTPUT_DIR', '/output')
