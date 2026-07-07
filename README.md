@@ -61,7 +61,7 @@ docker run -d \
 ```
 #### Open in a browser:
 ##### http://localhost:8080
-##### http://localhost:8080/files (список файлов)
+##### http://localhost:8080/files (file list)
 
 ### Viewing logs in real time
 ```bash
