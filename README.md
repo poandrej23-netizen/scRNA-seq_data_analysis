@@ -5,7 +5,7 @@ Automated pipeline for single-cell RNA sequencing (scRNA-seq) data analysis: loa
 Results (processed AnnData object and visualizations) are saved in a custom directory. 
 Supports a web interface.
 
-By default, human brain nucleus accumbens is used as real data. You can replace it with any of your data by replacing the link in line 25 of the executable .py file
+By default, human brain nucleus accumbens is used as real data. You can use it with any of your data by replacing the link in line 25 of the executable .py file.
 
 ## How to use
 
