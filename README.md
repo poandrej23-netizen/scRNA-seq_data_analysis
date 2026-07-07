@@ -1,26 +1,26 @@
 # scRNA-seq Data Analysis
 
-## Что делает проект
-Автоматизированный пайплайн для анализа данных single-cell РНК-секвенирования (scRNA-seq): загружает данные в формате H5AD, проводит QC, фильтрацию, удаление дублетов (Scrublet), нормализацию, PCA и UMAP. 
-Результаты (обработанный AnnData-объект и визуализации) сохраняются в настраиваемую директорию. 
-Поддерживает веб-интерфейс.
+## What the project does
+Automated pipeline for single-cell RNA sequencing (scRNA-seq) data analysis: loads data in H5AD format, performs QC, filtering, duplicate removal (Scrublet), normalization, PCA, and UMAP. 
+Results (processed AnnData object and visualizations) are saved in a custom directory. 
+Supports a web interface.
 
-## Как запустить
+## How to use
 
-### Базовый запуск
+### Quick start
 ```bash
 git clone https://github.com/poandrej23-netizen/scRNA-seq_data_analysis.git
 cd scRNA-seq_data_analysis
 ```
-### Сборка образа
+### Docker build
 ```bash
 docker build -t scrna-analysis .
 ```
-### Запуск анализа (вывод в терминал)
+### Analysis start
 ```bash
 docker run --rm scrna-analysis
 ```
-#### Демо-режим (создает небольшой искусственный датасет для быстрого тестирования)
+#### Demo mode (generates an artifical dataset)
 ```bash
 docker run --rm \
   -e DEMO_MODE=true \
@@ -28,15 +28,15 @@ docker run --rm \
   -v app-output:/output \
   scrna-analysis
 ```
-#### Быстрый тест на подвыборке реальных данных
+#### Real data subsample analysis
 ```bash
 docker run --rm \
-  -e QUICK_TEST=true \        # загрузит реальный файл, но возьмёт 5000 клеток
+  -e QUICK_TEST=true \        # it uses a real file, but will take 5000 cells
   -v app-/data \
   -v app-output:/output \
   scrna-analysis
 ```
-### Запуск с включённым веб-интерфейсом
+### Launching with the web interface enabled
 ```bash
 docker run -d \
   -p 8080:8080 \
@@ -47,7 +47,7 @@ docker run -d \
   --name scrna-web \
   scrna-analysis
 ```
-#### Запуск с включённым веб-интерфейсом в демо-режиме
+#### Launching with the web interface enabled in demo mode
 ```bash
 docker run -d \
   -p 8080:8080 \
@@ -57,21 +57,21 @@ docker run -d \
   --name scrna-demo \
   scrna-analysis
 ```
-#### Открыть в браузере:
+#### Open in a browser:
 ##### http://localhost:8080
 ##### http://localhost:8080/files (список файлов)
 
-### Просмотр логов в реальном времени
+### Viewing logs in real time
 ```bash
 docker logs -f scrna-web
 ```
-### Остановка и удаление
+### Stopping and deleting
 ```bash
 docker stop scrna-web && docker rm scrna-web
 ```
-### Доказательство сохранности данных
+### Proof of data security
 
-#### Первый запуск — создаём данные
+#### First launch — creating data
 ```bash
 docker run --rm \
   -v app-data:/data \
@@ -79,13 +79,13 @@ docker run --rm \
   --name run1 \
   scrna-analysis
 ```
-#### Проверка данных
+#### Data verification
 ```bash
 docker run --rm -v app-output:/output alpine ls -la /output
 ```
-##### Ожидается: processed_adata.h5ad, umap_*.png, pca_*.png
+##### Expected: processed_adata.h5ad, umap_*.png, pca_*.png
 
-##### Перезапуск
+##### Restart
 ```bash
 docker run --rm \
   -v app-data:/data \
@@ -95,8 +95,7 @@ docker run --rm \
 
 docker run --rm -v app-output:/output alpine ls -la /output
 ```
-## Какой вариант задания выбран и почему
-Вариант 3, потому что веб-интерфейс удобен для просмотра графиков UMAP, PCA. Сохранение данных удобно для проведения анализа с разными датасетами и их сравнения между собой и проверки воспроизводимости.
+
 
 
 
